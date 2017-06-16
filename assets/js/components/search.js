@@ -21,13 +21,13 @@ const Search = (update) => {
       img:null,
       name:jsonPokedex.pokemon_species.name,
       number:jsonPokedex.entry_number,
-      caracteristica:null,
-      Peso:null,
-      Sexo:null,
+      caracteristicas:null,
+      peso:null,
+      sexo:null,
       categoria:null,
-      Habilidad:null,
-      Tipo:null,
-      Debilidad:null
+      habilidad:null,
+      tipo:null,
+      debilidad:null
     };
     const img = $('<img class="img-pokemon" >');
     const urlImg =  "http://serebii.net/art/th/";
@@ -51,7 +51,7 @@ const Search = (update) => {
     spanHeart.on('click',function(){
       console.log('click');
       //alert('click');
-      $("#myModal").append(Modal());
+      $("#myModal").append(Modal(pokemon));
       //$('#myModal').on('shown.bs.modal', function () {
        //$('#myInput').focus()
     //  })
@@ -93,15 +93,31 @@ const Search = (update) => {
 
 return searchContainer;
 }
-const Modal= ()=>{
+const Modal= (pokemon)=>{
+  $.getJSON("http://pokeapi.co/api/v2/pokemon-species/"+pokemon.number+"/",function(modalPokemon){
+    const idiomaEs=4;//De esta manera eligo el objeto donde se encuentra en español
+    pokemon.caracteristicas=modalPokemon.flavor_text_entries[3].flavor_text;
+    const a=modalPokemon;
+    console.log(pokemon.caracteristicas);
+  });
 
   const modalDialog = $('<div class="modal-dialog" role="document"></div>');
   const modalContent = $('<div class="modal-content"></div>');
   const modalHeader = $('<div class="modal-header"></div>');
   const buttonclose = $('<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>');
   const spanClose = $('<span aria-hidden="true">&times;</span>');
-  const namePokemon = $('<h2 class="modal-title" id="myModalLabel">NaMe pokemon</h2>');
+  const namePokemon = $('<h2 class="modal-title" id="myModalLabel">'+pokemon.caracteristicas+'</h2>');
   const modalBody = $('<div class="modal-body"></div>');
+
+  const infoPokemon = $('<div class="modal-info-pokemon"></div>');
+
+
+  const spanInfo=$('<span aria-hidden="true">'+pokemon.caracteristicas+'</span>');
+  const modalImgPokemon = $('<div class="modal-img-pokemon"></div>');
+  const descripcionModal = $('<div class="modal-descripcion-pokemon"></div>');
+  const caracModal = $('<div class="modal-caracteristicas-pokemon"></div>');
+  const tipoModal = $('<div class="modal-tipo-pokemon"></div>');
+  const debilidadModal = $('<div class="modal-debilidad-pokemon"></div>');
 
 
 
