@@ -1,7 +1,7 @@
 'use strict';
 
 const Search = (update) => {
-  const searchContainer = $('<div class="container"></div>');
+  const searchContainer = $('<div class="container-fluid"></div>');
   const row = $('<div class="div-pokedex row"></div>');
   const search = $('<div class="search"></div>');
   const icon = $('<i class="fa fa-search" aria-hidden="true"></i>');
@@ -12,7 +12,7 @@ const Search = (update) => {
 
 
   for(var i=0; i<=5;i++){
-    const divImg = $('<div class="div-pokemon"></div>');
+    const divImg = $('<div class="div-pokemon col-xs-2"></div>');
     const jsonPokedex=state.pokemons.pokemon_entries[i];
     console.log(jsonPokedex);
     const pokemon = {
