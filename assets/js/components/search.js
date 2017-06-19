@@ -12,7 +12,7 @@ const Search = (update) => {
 
 
   for(var i=0; i<=5;i++){
-    const divImg = $('<div class="div-pokemon col-xs-2"></div>');
+    const divImg = $('<div class="div-pokemon col-xs-12 col-sm-4 col-md-2"></div>');
     const jsonPokedex=state.pokemons.pokemon_entries[i];
     console.log(jsonPokedex);
     const pokemon = {
@@ -152,8 +152,8 @@ const Modal= (pokemon)=>{
 
   buttonclose.append(spanClose);
   modalHeader.append(buttonclose);
-  modalContent.append(modalBody);
   modalContent.append(modalHeader);
+  modalContent.append(modalBody);
   modalHeader.append(namePokemon);
   modalDialog.append(modalContent);
 
